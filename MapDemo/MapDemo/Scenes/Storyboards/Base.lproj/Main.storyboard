@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g2f-cG-pjC">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="fTA-fO-om9">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" id="g2f-cG-pjC" customClass="MainViewController" customModule="MapDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gIr-J6-ssU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Enter the destination location" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAo-Ug-PQB">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="g2f-cG-pjC" id="wzF-5D-aeb"/>
+                                </connections>
+                            </searchBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGg-Ed-pQN">
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <connections>
+                                    <outlet property="delegate" destination="g2f-cG-pjC" id="H0b-rT-EbP"/>
+                                </connections>
+                            </mapView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NSx-zJ-6Sc">
+                                <rect key="frame" x="0.0" y="683" width="414" height="179"/>
+                                <connections>
+                                    <segue destination="CVX-lt-7r5" kind="embed" identifier="RouteVCSegue" id="aXv-GM-FyQ"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="c9k-H0-Tg7" firstAttribute="leading" secondItem="NGg-Ed-pQN" secondAttribute="leading" id="5mc-d8-Yhv"/>
+                            <constraint firstItem="c9k-H0-Tg7" firstAttribute="trailing" secondItem="YAo-Ug-PQB" secondAttribute="trailing" id="9Sa-CL-XzX"/>
+                            <constraint firstItem="YAo-Ug-PQB" firstAttribute="leading" secondItem="c9k-H0-Tg7" secondAttribute="leading" id="BaV-S6-OlE"/>
+                            <constraint firstItem="c9k-H0-Tg7" firstAttribute="trailing" secondItem="NGg-Ed-pQN" secondAttribute="trailing" id="DM2-Zr-Kfp"/>
+                            <constraint firstItem="c9k-H0-Tg7" firstAttribute="bottom" secondItem="NGg-Ed-pQN" secondAttribute="bottom" id="Dh6-5a-Avs"/>
+                            <constraint firstItem="c9k-H0-Tg7" firstAttribute="bottom" secondItem="NSx-zJ-6Sc" secondAttribute="bottom" id="LQD-9r-B8s"/>
+                            <constraint firstItem="NSx-zJ-6Sc" firstAttribute="leading" secondItem="c9k-H0-Tg7" secondAttribute="leading" id="Qgr-W4-ghQ"/>
+                            <constraint firstItem="c9k-H0-Tg7" firstAttribute="trailing" secondItem="NSx-zJ-6Sc" secondAttribute="trailing" id="TE2-BX-jCq"/>
+                            <constraint firstItem="YAo-Ug-PQB" firstAttribute="top" secondItem="c9k-H0-Tg7" secondAttribute="top" id="bLU-Eg-Mky"/>
+                            <constraint firstItem="NGg-Ed-pQN" firstAttribute="top" secondItem="YAo-Ug-PQB" secondAttribute="bottom" id="pSj-JY-DI2"/>
+                            <constraint firstItem="NSx-zJ-6Sc" firstAttribute="height" secondItem="gIr-J6-ssU" secondAttribute="height" multiplier="1:5" id="yYo-4E-HTc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="c9k-H0-Tg7"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="NGg-Ed-pQN" id="4Xo-sP-P5a"/>
+                        <outlet property="searchBar" destination="YAo-Ug-PQB" id="43Y-ug-IjO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7LR-AJ-PEw" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000.0000000000001" y="138.61607142857142"/>
+        </scene>
+        <!--Route View Controller-->
+        <scene sceneID="kTP-Zw-Aew">
+            <objects>
+                <viewController storyboardIdentifier="RouteViewController" id="CVX-lt-7r5" customClass="RouteViewController" customModule="MapDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qad-cM-9BR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sFM-uJ-xED">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XOp-2R-Dx8">
+                                    <size key="itemSize" width="419" height="103"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RouteCell" id="ujh-dW-Uv7" customClass="RouteCell" customModule="MapDemo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="38" width="419" height="103"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="419" height="103"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="CVX-lt-7r5" id="ygK-CA-aXl"/>
+                                    <outlet property="delegate" destination="CVX-lt-7r5" id="F5m-Ye-xDz"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sFM-uJ-xED" firstAttribute="leading" secondItem="qad-cM-9BR" secondAttribute="leading" id="KMB-vM-kUZ"/>
+                            <constraint firstAttribute="bottom" secondItem="sFM-uJ-xED" secondAttribute="bottom" id="bBg-hl-j0D"/>
+                            <constraint firstAttribute="trailing" secondItem="sFM-uJ-xED" secondAttribute="trailing" id="duV-No-h5m"/>
+                            <constraint firstItem="sFM-uJ-xED" firstAttribute="top" secondItem="qad-cM-9BR" secondAttribute="top" id="rle-LD-oc4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fnJ-EQ-d9p"/>
+                    </view>
+                    <connections>
+                        <outlet property="routesCollectionView" destination="sFM-uJ-xED" id="kP1-59-pzW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="81T-iA-Qa2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1813.0434782608697" y="378.68303571428572"/>
+        </scene>
+    </scenes>
+</document>
